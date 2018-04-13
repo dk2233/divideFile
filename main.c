@@ -44,7 +44,7 @@ void copyAllLineToFile(char *file_name, FILE *fromFile)
 	strcat(tab,file_name);
 	printf(" file to open %s",tab);
 	file1= fopen(tab,"w+");
-	printf("%ld",(long)file1);
+
 	line= malloc(BUFFER_LENGTH);
 
 	if (NULL == file1)
@@ -58,9 +58,7 @@ void copyAllLineToFile(char *file_name, FILE *fromFile)
 	while( (line!=NULL) &&  (strstr(line,END_OF_FILE) == NULL)  )
 	{
 
-
 		fprintf(file1,"%s",line);
-		/*printf("%s",line); */
 		fgets(line,BUFFER_LENGTH,fromFile);
 
 	}
@@ -112,14 +110,11 @@ int main(int argc, char *argv[])
 
 
 	printf(" \n\n *************** \n\n");
-	//line = "abc";
-	//showAllChars(line);
 	if (argc>1)
 	{
 		printf(" I opened file %s ",argv[1]);
 
 		file_to_analyse = fopen(argv[1],"r");
-		/*file_to_analyse = fopen("RS_all_set.ch","r");*/
 		if (NULL == file_to_analyse)
 		{
 			perror(" I cant open file:");
@@ -138,13 +133,12 @@ int main(int argc, char *argv[])
 				if (temp != NULL)
 				{
 
-					showAllChars(temp);
+					//showAllChars(temp);
 					removeAllsymbol('\n',temp);
 					removeAllsymbol('>',temp);
 					removeAllsymbol(' ',temp);
-					showAllChars(temp);
-					/*char *name = malloc(strlen(temp));
-					strcpy(name,temp);*/
+					//showAllChars(temp);
+
 
 					copyAllLineToFile(temp,file_to_analyse);
 				}
@@ -156,9 +150,9 @@ int main(int argc, char *argv[])
 
 			}
 
-			//line = NULL;
-			fgets(line,BUFFER_LENGTH,file_to_analyse);
 
+			line = fgets(line,BUFFER_LENGTH,file_to_analyse);
+			printf("LINE %s ",line);
 
 		}
 	fclose(file_to_analyse);
