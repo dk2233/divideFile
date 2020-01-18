@@ -42,7 +42,7 @@ dnl AC_DEFINE([PCRE2_CODE_UNIT_WIDTH],[8])
 dnl AC_CHECK_HEADERS([pcre2.h], [LIBS="-lpcre2-8 $LIBS"],[AC_MSG_ERROR([there is no pcre2 header])],[])
 AM_PROG_AR
 AC_PROG_INSTALL
-AC_CONFIG_FILES([Makefile ])
+AC_CONFIG_FILES([Makefile src/Makefile])
 AC_OUTPUT
 
 cat << EOF
